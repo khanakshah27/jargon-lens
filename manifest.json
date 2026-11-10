@@ -1,0 +1,49 @@
+{
+  "manifest_version": 3,
+  "name": "Jargon Lens",
+  "version": "0.1.0",
+  "description": "Hover any acronym or buzzword on Slack, Gmail, Outlook, Notion and more to see a plain-English meaning. Learns your company's own jargon from shared glossaries.",
+  "icons": {
+    "16": "icons/16.png",
+    "48": "icons/48.png",
+    "128": "icons/128.png"
+  },
+  "permissions": [
+    "storage",
+    "alarms"
+  ],
+  "optional_host_permissions": [
+    "https://*/*"
+  ],
+  "background": {
+    "service_worker": "src/background.js"
+  },
+  "action": {
+    "default_popup": "src/popup.html",
+    "default_title": "Jargon Lens"
+  },
+  "options_page": "src/options.html",
+  "content_scripts": [
+    {
+      "matches": [
+        "https://app.slack.com/*",
+        "https://*.slack.com/*",
+        "https://mail.google.com/*",
+        "https://outlook.office.com/*",
+        "https://outlook.live.com/*",
+        "https://outlook.office365.com/*",
+        "https://*.notion.so/*",
+        "https://*.atlassian.net/*",
+        "https://teams.microsoft.com/*",
+        "https://github.com/*"
+      ],
+      "js": [
+        "src/matcher.js",
+        "src/glossary.js",
+        "src/content.js"
+      ],
+      "run_at": "document_idle",
+      "all_frames": false
+    }
+  ]
+}

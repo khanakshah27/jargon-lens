@@ -1,0 +1,40 @@
+<!doctype html>
+<meta charset="utf-8">
+<title>Jargon Lens: company glossary</title>
+<style>
+  body{margin:0;background:#f7f5ff;color:#1d1a2f;font:15px/1.5 system-ui,sans-serif}
+  main{max-width:720px;margin:0 auto;padding:40px 20px}
+  h1{margin:0 0 4px} h2{margin:32px 0 8px;font-size:17px}
+  p.s{color:#6a6580;margin:0 0 16px}
+  .card{background:#fff;border:1px solid #e4defa;border-radius:14px;padding:18px}
+  input[type=url],textarea{width:100%;box-sizing:border-box;padding:10px;border:1px solid #d6cdf5;border-radius:8px;font:inherit}
+  textarea{height:140px;font-family:ui-monospace,Menlo,monospace;font-size:13px}
+  button{background:#6a47f0;color:#fff;border:0;border-radius:8px;padding:9px 16px;font:inherit;cursor:pointer;margin-top:10px}
+  button.g{background:#ece7ff;color:#4a2fc0}
+  ul{list-style:none;padding:0;margin:0} li{display:flex;justify-content:space-between;gap:12px;padding:10px 0;border-top:1px solid #eee9ff}
+  li:first-child{border-top:0} .e{color:#c0392b} .m{color:#6a6580;font-size:13px} code{background:#efeaff;padding:1px 5px;border-radius:4px}
+  #msg{margin-top:10px;font-size:13px;min-height:1em}
+</style>
+<main>
+  <h1>Company glossary</h1>
+  <p class="s">Teach Jargon Lens the acronyms your team uses. Your terms override the built-in ones.</p>
+
+  <h2>Shared glossary link</h2>
+  <div class="card">
+    <p class="s">A link to a JSON or CSV file, for example a raw file on GitHub or a published sheet. It refreshes every six hours.</p>
+    <input type="url" id="url" placeholder="https://example.com/our-glossary.csv">
+    <button id="add">Add and sync</button>
+    <ul id="sources"></ul>
+  </div>
+
+  <h2>Paste your own terms</h2>
+  <div class="card">
+    <p class="s">One per line as <code>TERM,meaning</code>, or paste a JSON list.</p>
+    <textarea id="paste" placeholder="NPS,Net Promoter Score&#10;Project Atlas,Our 2026 platform rewrite"></textarea>
+    <button id="save">Save terms</button>
+    <button class="g" id="clear">Remove pasted terms</button>
+    <div id="msg"></div>
+  </div>
+</main>
+<script src="glossary-parse.js"></script>
+<script src="options.js"></script>

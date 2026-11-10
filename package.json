@@ -1,0 +1,11 @@
+{
+  "name": "jargon-lens",
+  "version": "0.1.0",
+  "description": "Chrome extension that explains workplace acronyms and buzzwords on hover.",
+  "private": true,
+  "license": "MIT",
+  "scripts": {
+    "build": "node scripts/build-glossary.js",
+    "test": "node --test tests/*.test.js"
+  }
+}
